@@ -14,6 +14,7 @@ class SignupState extends State<Signup> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   Future<void> registration() async {
@@ -21,6 +22,16 @@ class SignupState extends State<Signup> {
       String name = nameController.text.trim();
       String email = emailController.text.trim();
       String password = passwordController.text.trim();
+      String confirmPassword = confirmPasswordController.text.trim();
+
+      if (password != confirmPassword) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Passwords do not match", style: TextStyle(fontSize: 18.0)),
+          ),
+        );
+        return;
+      }
 
       try {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -67,7 +78,7 @@ class SignupState extends State<Signup> {
               width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Color(0xFFB91635), Color(0xff621d3c), Color(0XFF311937)],
+                  colors: [Color(0xFF16A085), Color(0xff2ECC71), Color(0XFF27AE60)],
                 ),
               ),
               child: const Text(
@@ -110,6 +121,14 @@ class SignupState extends State<Signup> {
                       validator: (value) => value!.isEmpty ? 'Please enter password' : null,
                       decoration: const InputDecoration(hintText: "Password", prefixIcon: Icon(Icons.password_outlined)),
                     ),
+                    const SizedBox(height: 20.0),
+                    const Text("Confirm Password", style: TextStyle(color: Colors.greenAccent, fontSize: 23.0, fontWeight: FontWeight.bold)),
+                    TextFormField(
+                      controller: confirmPasswordController,
+                      obscureText: true,
+                      validator: (value) => value!.isEmpty ? 'Please confirm password' : (value != passwordController.text ? 'Passwords do not match' : null),
+                      decoration: const InputDecoration(hintText: "Confirm Password", prefixIcon: Icon(Icons.password_outlined)),
+                    ),
                     const SizedBox(height: 40.0),
                     GestureDetector(
                       onTap: registration,
@@ -118,7 +137,7 @@ class SignupState extends State<Signup> {
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
-                            colors: [Color(0xFFB91635), Color(0xff621d3c), Color(0XFF311937)],
+                            colors: [Color(0xFF16A085), Color(0xff2ECC71), Color(0XFF27AE60)],
                           ),
                           borderRadius: BorderRadius.circular(30),
                         ),
@@ -134,7 +153,7 @@ class SignupState extends State<Signup> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: const [
-                        Text("Already Have Account?", style: TextStyle(color: Colors.purple, fontSize: 17.0, fontWeight: FontWeight.w500)),
+                        Text("Already Have Account?", style: TextStyle(color: Colors.black, fontSize: 17.0, fontWeight: FontWeight.w500)),
                       ],
                     ),
                     GestureDetector(
@@ -144,7 +163,7 @@ class SignupState extends State<Signup> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: const [
-                          Text("Sign in", style: TextStyle(color: Colors.pink, fontSize: 17.0, fontWeight: FontWeight.bold)),
+                          Text("Sign in", style: TextStyle(color: Colors.blue, fontSize: 17.0, fontWeight: FontWeight.bold)),
                         ],
                       ),
                     ),

@@ -1,4 +1,5 @@
 import 'package:arogyapath/pages/default_same_pages/homesame.dart';
+import 'package:arogyapath/pages/doctor/doctorhome.dart';
 import 'package:arogyapath/pages/login_signup/login.dart';
 import 'package:arogyapath/pages/login_signup/signup.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _OnboardingState extends State<Onboarding> {
                   // Navigate to another page
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Signup()), // Replace NextPage with your page
+                    MaterialPageRoute(builder: (context) => DocHomeScreen()), // Replace NextPage with your page
                   );
                 },
                 style: ElevatedButton.styleFrom(

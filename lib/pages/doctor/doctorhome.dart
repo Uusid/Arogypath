@@ -1,3 +1,5 @@
+import 'package:arogyapath/pages/doctor/mypatients.dart';
+import 'package:arogyapath/pages/login_signup/signup.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,24 +19,34 @@ class DocHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green, // Top bar color
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {}, // Back button action
+      appBar:AppBar(
+        backgroundColor: Colors.green[400], // Background color of AppBar
+        leading: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Image.asset('assets/images/Arogyalogo.png'), // Replace with your logo asset path
         ),
-        title: Text('Home'),
         actions: [
-          IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {}, // Menu button action
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Signup()), // Navigate to login page
+              );
+            },
+            child: Row(
+              children: [
+                Icon(Icons.account_circle, color: Colors.black),
+                SizedBox(width: 5),
+                Text('Signup/Login', style: TextStyle(color: Colors.black)),
+              ],
+            ),
           ),
         ],
       ),
       body: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(50.0),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [Colors.green, Colors.lightGreen], // Gradient background
@@ -42,8 +54,8 @@ class DocHomeScreen extends StatelessWidget {
                 end: Alignment.bottomCenter,
               ),
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(50.0),
-                bottomRight: Radius.circular(50.0),
+                bottomLeft: Radius.circular(100.0),
+                bottomRight: Radius.circular(100.0),
               ),
             ),
             child: Column(
@@ -67,10 +79,12 @@ class DocHomeScreen extends StatelessWidget {
               crossAxisSpacing: 20.0,
               mainAxisSpacing: 20.0,
               children: [
-                _buildGridItem(context, 'My Patients', Icons.person, PatientsPage()),
+                _buildGridItem(context, 'My Patients', Icons.person, Mypatientspage()),
                 _buildGridItem(context, 'Patient request', Icons.people, PatientRequestsPage()),
-                _buildGridItem(context, 'Appointment', Icons.calendar_today, AppointmentPage()),
-                _buildGridItem(context, 'My Calendar', Icons.calendar_month, MyCalendarPage()),
+                _buildGridItem(context, 'Appointments', Icons.calendar_today, AppointmentPage()),
+                _buildGridItem(context, 'Calendar', Icons.calendar_month, MyCalendarPage()),
+                _buildGridItem(context, 'Messages', Icons.message, MyCalendarPage()),
+                _buildGridItem(context, 'Hospital Profile', Icons.local_hospital, MyCalendarPage()),
               ],
             ),
           ),
