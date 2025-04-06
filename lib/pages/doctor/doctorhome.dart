@@ -1,4 +1,7 @@
-import 'package:arogyapath/pages/doctor/mypatients.dart';
+import 'package:arogyapath/pages/doctor/HospitalProfile/hospitalprofile.dart';
+import 'package:arogyapath/pages/doctor/Patient%20Request/patientrequest.dart';
+import 'package:arogyapath/pages/doctor/mypatient/mypatients.dart';
+import 'package:arogyapath/pages/doctor/todays_appoinment/todaysappointment.dart';
 import 'package:arogyapath/pages/login_signup/signup.dart';
 import 'package:flutter/material.dart';
 
@@ -81,10 +84,10 @@ class DocHomeScreen extends StatelessWidget {
               children: [
                 _buildGridItem(context, 'My Patients', Icons.person, Mypatientspage()),
                 _buildGridItem(context, 'Patient request', Icons.people, PatientRequestsPage()),
-                _buildGridItem(context, 'Appointments', Icons.calendar_today, AppointmentPage()),
+                _buildGridItem(context, 'Todays Appointments', Icons.calendar_today, TodaysAppointmentsPage()),
                 _buildGridItem(context, 'Calendar', Icons.calendar_month, MyCalendarPage()),
                 _buildGridItem(context, 'Messages', Icons.message, MyCalendarPage()),
-                _buildGridItem(context, 'Hospital Profile', Icons.local_hospital, MyCalendarPage()),
+                _buildGridItem(context, 'Hospital Profile', Icons.local_hospital, HospitalProfilePage()),
               ],
             ),
           ),
@@ -128,36 +131,11 @@ class DocHomeScreen extends StatelessWidget {
 }
 
 // Example pages for navigation
-class PatientsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('My Patients')),
-      body: Center(child: Text('Patients Page')),
-    );
-  }
-}
-
-class PatientRequestsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Patient Requests')),
-      body: Center(child: Text('Patient Requests Page')),
-    );
-  }
-}
 
 
-class AppointmentPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Appointment')),
-      body: Center(child: Text('Appointment Page')),
-    );
-  }
-}
+
+
+
 
 class MyCalendarPage extends StatelessWidget {
   @override

@@ -1,5 +1,5 @@
-import 'package:arogyapath/pages/doctor/callpatient.dart';
-import 'package:arogyapath/pages/doctor/msgpatent.dart';
+import 'package:arogyapath/pages/doctor/mypatient/callpatient.dart';
+import 'package:arogyapath/pages/doctor/mypatient/msgpatent.dart';
 import 'package:flutter/material.dart';
 
 
